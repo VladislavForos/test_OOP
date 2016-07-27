@@ -22,8 +22,8 @@
             ?>
         </div>
         <div id = "navigation">
-            <a href = "http://localhost/learning/index.php?num=<?php echo "$positionFirstNews - $count_news_on_page;"; ?>">Назад</a>
-            <a href = "http://localhost/learning/index.php?num=<?php echo "$positionFirstNews + $count_news_on_page;"; ?> ">Далее</a>
+            <a href = "http://localhost/learning/index.php?num=<?php if (($positionFirstNews - $count_news_on_page) < 0 ) $positionFirstNews = 0; echo $positionFirstNews - $count_news_on_page;; ?>">Назад</a>
+            <a href = "http://localhost/learning/index.php?num=<?php if (($positionFirstNews - $count_news_on_page) > $count_news_on_page ) $positionFirstNews = 0; echo $positionFirstNews + $count_news_on_page;; ?> ">Далее</a>
         </div>
     </body>
 </html>
