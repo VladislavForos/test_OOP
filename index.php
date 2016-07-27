@@ -22,8 +22,8 @@
             ?>
         </div>
         <div id = "navigation">
-            <a href = "http://localhost/learning/index.php?num=<?php $positionFirstNews -= $count_news_on_page; ?>">Назад</a>
-            <a href = "http://localhost/learning/index.php?num=<?php $positionFirstNews += $count_news_on_page; ?> ">Далее</a>
+            <a href = "http://localhost/learning/index.php?num=<?php echo "$positionFirstNews - $count_news_on_page;"; ?>">Назад</a>
+            <a href = "http://localhost/learning/index.php?num=<?php echo "$positionFirstNews + $count_news_on_page;"; ?> ">Далее</a>
         </div>
     </body>
 </html>
