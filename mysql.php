@@ -18,7 +18,7 @@ class db_mysql
 
 	function connect()
 	{
-		$this->link = mysql_pconnect($this->host,$this->user,$this->pass);
+		$this->link = @mysql_pconnect($this->host,$this->user,$this->pass);
 		if(!$this->link){
 			error_log('mysql: down');
 			$this->link = mysql_pconnect($this->host,$this->user,$this->pass);
@@ -47,7 +47,7 @@ class db_mysql
 	if(isset($GLOBALS['DEBUG_SQL']))
 	error_log($z);
 
-	if(REACTOR_TRACE_SQL==1)
+	if(@REACTOR_TRACE_SQL==1)
 	reactor_trace('sql '.$t.': <b>'.$z.'</b>');
 
 	return $this->rez;
