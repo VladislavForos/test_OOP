@@ -37,13 +37,14 @@
     function PrintNews($positionFirstNews, $count_news_on_page)
     {
         $_db2 = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);
-        $_db2->sql("SELECT * FROM news ORDER BY id ASC");
+        $_db2->sql("SELECT * FROM news WHERE id > ".$positionFirstNews." AND id < ("."$positionFirstNews"."+".$count_news_on_page."+1".") ORDER BY id ASC");
         $news = $_db2->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
 
         //вывод новостей на экран
-        for ($i = $positionFirstNews; $i < $positionFirstNews + $count_news_on_page; $i++) {
-            echo "  <h3> " . @$news[$i]['title'] . " </h3>
-                                    <p> " . @$news[$i]['content'] . " </p>
+        foreach ($news as $elem)
+        {
+            echo "  <h3> " . @$elem['title'] . " </h3>
+                                    <p> " . @$elem['content'] . " </p>
                                     <br>
                                  ";
         }
