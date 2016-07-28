@@ -104,7 +104,7 @@ class db_mysql
 
 	function close()
 	{
-	mysql_close($this->link);
+	@mysql_close($this->link);
 	}
 
 	function last_id()
