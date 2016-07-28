@@ -1,5 +1,5 @@
 <?php
-    include ("config.php");
+    include("core.php");
 
     $positionFirstNews; //с какой по счету новости начинать вывод на экран
     $count_news_on_page = 4;
