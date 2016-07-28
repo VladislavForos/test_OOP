@@ -1,3 +1,6 @@
+<?php
+    include ("handler.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +12,6 @@
         </div>
         <div id = "content">
             <?php
-                include ("handler.php");
                 PrintNews($positionFirstNews, $count_news_on_page);
             ?>
         </div>
