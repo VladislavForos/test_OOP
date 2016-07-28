@@ -5,7 +5,7 @@
     $count_news_on_page = 4;
 
     //вытягиваем из БД данные
-    $_db = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);	//создаем новый объект, передавая в качестве аргумента константы
+   
     $a = $_db->sql("SELECT COUNT(1) FROM news");
     $countNews = @mysql_fetch_array( $a );
 
