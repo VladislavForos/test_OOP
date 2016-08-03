@@ -9,7 +9,6 @@
 </div>
 <div id = "content">
     <?php
-                
                 //вывод новостей на экран
                 foreach ($arr as $elem)
                 {
