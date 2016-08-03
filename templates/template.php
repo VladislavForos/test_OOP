@@ -9,7 +9,7 @@
 </div>
 <div id = "content">
     <?php
-                $arr = GetNews($positionFirstNews, $count_news_on_page);
+                
                 //вывод новостей на экран
                 foreach ($arr as $elem)
                 {
