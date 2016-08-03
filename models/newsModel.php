@@ -1,12 +1,30 @@
 <?php
 
-    $positionFirstNews; //с какой по счету новости начинать вывод на экран
-    $count_news_on_page = 4;
+    class Model
+    {
+        private $positionFirstNews; //с какой по счету новости начинать вывод на экран
+        private $count_news_on_page = 4;
+        private $countNews;
+        private $a = $_db->sql("SELECT COUNT(1) FROM news");
+
+        function __construct()
+        {
+            $this->positionFirstNews = 0;
+
+            $countNews = @mysql_fetch_array( $a );
+
+        }
+
+
+
+    }
+
+
+
 
     //вытягиваем из БД данные
    
-    $a = $_db->sql("SELECT COUNT(1) FROM news");
-    $countNews = @mysql_fetch_array( $a );
+
 
     if (isset($_GET['num']))
     {
@@ -41,4 +59,11 @@
     
 
 $_db->close();
+
+
+
+
+
+
+
 ?>
