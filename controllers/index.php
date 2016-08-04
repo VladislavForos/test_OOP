@@ -1,7 +1,7 @@
 <?php
-    include '../core.php';
-    include'../models/newsModel.php';
-    include'../templates/template.php';
+    require_once '../core.php';
+    require_once '../models/newsModel.php';
+    require_once '../views/newsView.php';
 
     class Controller
     {
@@ -16,5 +16,11 @@
     $model = new Model();
     $controller = new Controller($model);
     $view = new View($controller, $model);
+
+
+        $model->SetPositionFirstNew();
+        $arr = $model->GetNews();
+        $view->ShowTemplate("templates/template.php");
+
 ?>
 
