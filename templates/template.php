@@ -9,7 +9,6 @@
 </div>
 <div id = "content">
     <?php
-                $arr = GetNews($positionFirstNews, $count_news_on_page);
                 //вывод новостей на экран
                 foreach ($arr as $elem)
                 {
@@ -21,12 +20,12 @@
             ?>
 </div>
 <div id = "navigation">
-    <a href = "index.php?num=<?php
+    <a href = "http://localhost/learning/controllers/index.php?num=<?php
                 echo $positionFirstNews - $count_news_on_page;
                 ?>">Назад
     </a>
 
-    <a href = "index.php?num=<?php
+    <a href = "http://localhost/learning/controllers/index.php?num=<?php
                 echo $positionFirstNews + $count_news_on_page;
                 ?>">Далее
     </a>
