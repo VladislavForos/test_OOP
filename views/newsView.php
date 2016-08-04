@@ -20,7 +20,7 @@
 
         function ShowTemplate($path)
         {
-            include_once "$this->mainPath.$path";
+            include_once "$this->mainPath$path";
         }
 
         function ShowNews($arrayNews)
