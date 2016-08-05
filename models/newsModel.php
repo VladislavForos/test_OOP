@@ -5,13 +5,16 @@
         private $count_news_on_page = 4;
         private $countNews;
         public $newsArray;
-
-        //private $a = $_db->sql("SELECT COUNT(1) FROM news");
+        private $_db;
+        private $a;
 
         function __construct()
         {
             $this->positionFirstNews = 0;
-            $this->countNews = @mysql_fetch_array( $a );
+            $this->_db = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);
+            $this->a = $this->_db->sql("SELECT COUNT(1) FROM news");
+            $this->countNews = @mysql_fetch_array( $this->a );
+
         }
 
         function SetPositionFirstNew()
@@ -42,9 +45,9 @@
 
         function GetNews()
         {
-            $_db2 = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);
-            $_db2->sql("SELECT * FROM news WHERE id > ".$this->positionFirstNews." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
-            $news = $_db2->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
+
+            $this->_db->sql("SELECT * FROM news WHERE id > ".$this->positionFirstNews." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
+            $news = $this->_db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
             return $news;
         }
 
