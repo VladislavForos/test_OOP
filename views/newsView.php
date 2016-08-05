@@ -15,7 +15,7 @@
         {
             $this->controller = $controller;
             $this->model = $model;
-            $this->mainPath = "localhost/learning/";
+            $this->mainPath = "http://localhost/learning/";
         }
 
         function ShowTemplate($path)
