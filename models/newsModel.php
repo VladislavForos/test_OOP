@@ -8,19 +8,20 @@
     //вытягиваем из БД данные
     function SetCountNews($_db)
     {
-        $a = $_db->sql("SELECT COUNT(*) FROM news");
-        $count = @mysql_fetch_array( $a );
-        return $count;
+        $_db->sql("SELECT COUNT(*) FROM news");
+        $count = $_db->matr();
+        //$count = @mysql_fetch_array( $a );
+        return $count[0];
     }
 
     function SetPosition($countNews, $count_news_on_page, $get)
     {
         if (isset($get)) {
-            if ($get > $countNews[0]) {
+            if ($get > $countNews) {
                 $positionFirstNews = 0;
             } else {
                 if ($get < 0) {
-                    $positionFirstNews = $countNews[0] - $count_news_on_page;
+                    $positionFirstNews = $countNews - $count_news_on_page;
                 } else {
                     $positionFirstNews = $get;
                 }
