@@ -6,28 +6,29 @@
     $countNews;
 
     //вытягиваем из БД данные
-    function sqlInjection($_db, &$countNews)
+    function SetCountNews($_db)
     {
-        $a = $_db->sql("SELECT COUNT(1) FROM news");
-        $countNews = @mysql_fetch_array( $a );
+        $a = $_db->sql("SELECT COUNT(*) FROM news");
+        $count = @mysql_fetch_array( $a );
+        return $count;
     }
 
-
-    function SetPosition($countNews, $count_news_on_page, &$positionFirstNews)
+    function SetPosition($countNews, $count_news_on_page, $get)
     {
-        if (isset($_GET['num'])) {
-            if ($_GET['num'] > $countNews[0]) {
+        if (isset($get)) {
+            if ($get > $countNews[0]) {
                 $positionFirstNews = 0;
             } else {
-                if ($_GET['num'] < 0) {
+                if ($get < 0) {
                     $positionFirstNews = $countNews[0] - $count_news_on_page;
                 } else {
-                    $positionFirstNews = $_GET['num'];
+                    $positionFirstNews = $get;
                 }
             }
         } else {
             $positionFirstNews = 0;
         }
+        return $positionFirstNews;
     }
 
     function GetNews($positionFirstNews, $count_news_on_page)
@@ -37,7 +38,4 @@
         $news = $_db2->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
         return $news;
     }
-    
-
-$_db->close();
 ?>
