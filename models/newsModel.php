@@ -1,34 +1,33 @@
 <?php
 
+
     $positionFirstNews; //с какой по счету новости начинать вывод на экран
     $count_news_on_page = 4;
+    $countNews;
 
     //вытягиваем из БД данные
-   
-    $a = $_db->sql("SELECT COUNT(1) FROM news");
-    $countNews = @mysql_fetch_array( $a );
-
-    if (isset($_GET['num']))
+    function sqlInjection($_db, &$countNews)
     {
-        if ($_GET['num'] > $countNews[0])
-        {
+        $a = $_db->sql("SELECT COUNT(1) FROM news");
+        $countNews = @mysql_fetch_array( $a );
+    }
+
+
+    function SetPosition($countNews, $count_news_on_page, &$positionFirstNews)
+    {
+        if (isset($_GET['num'])) {
+            if ($_GET['num'] > $countNews[0]) {
+                $positionFirstNews = 0;
+            } else {
+                if ($_GET['num'] < 0) {
+                    $positionFirstNews = $countNews[0] - $count_news_on_page;
+                } else {
+                    $positionFirstNews = $_GET['num'];
+                }
+            }
+        } else {
             $positionFirstNews = 0;
         }
-        else
-        {
-            if ($_GET['num'] < 0)
-            {
-                $positionFirstNews = $countNews[0] - $count_news_on_page;
-            }
-            else
-            {
-                $positionFirstNews = $_GET['num'];
-            }
-        }
-    }
-    else
-    {
-        $positionFirstNews = 0;
     }
 
     function GetNews($positionFirstNews, $count_news_on_page)
