@@ -20,12 +20,12 @@
             ?>
 </div>
 <div id = "navigation">
-    <a href = "../controllers/news.php?num=<?php
+    <a href = "http://localhost/testing/controllers/index.php?num=<?php
                 echo $positionFirstNews - $count_news_on_page;
                 ?>">Назад
     </a>
 
-    <a href = "../controllers/news.php?num=<?php
+    <a href = "http://localhost/testing/controllers/index.php?num=<?php
                 echo $positionFirstNews + $count_news_on_page;
                 ?>">Далее
     </a>
