@@ -9,9 +9,9 @@
     function SetCountNews($_db)
     {
         $_db->sql("SELECT COUNT(*) FROM news");
-        $count = $_db->matr();
-        //$count = @mysql_fetch_array( $a );
-        return $count[0];
+        $count = $_db->line();
+        //print_r($count['COUNT(*)']);
+        return $count['COUNT(*)'];
     }
 
     function SetPosition($countNews, $count_news_on_page, $get)
