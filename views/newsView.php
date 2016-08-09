@@ -22,12 +22,5 @@
         {
             include_once "$this->mainPath$path";
         }
-
-        function ShowNews($arrayNews)
-        {
-            
-
-
-        }
     }
 ?>
