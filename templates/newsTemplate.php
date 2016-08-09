@@ -10,7 +10,7 @@
 <div id = "content">
     <?php
                 //вывод новостей на экран
-                foreach ($arr as $elem)
+                foreach (@$arr as $elem)
                 {
                     echo "  <h3> " . @$elem['title'] . " </h3>
                      <p> " . @$elem['content'] . " </p>
@@ -29,7 +29,10 @@
                 echo $positionFirstNews + $count_news_on_page;
                 ?>">Далее
     </a>
-
+    //не знаю, как добраться до тех переменных...."Undefined variable: model in C:\Apache24\htdocs\testing\templates\newsTemplate.php on line 33"
+    <?php
+        echo $model->positionFirstNews - $model->count_news_on_page;
+    ?>
 </div>
 </body>
 </html>
