@@ -18,9 +18,9 @@
     $view = new View($controller, $model);
 
 
-        $model->SetPositionFirstNew();
+        $model->SetPositionFirstNew($_GET['num']);
         $arr = $model->GetNews();
-        $view->ShowTemplate("templates/template.php");
+        $view->ShowTemplate("templates/newsTemplate.php");
 
 ?>
 
