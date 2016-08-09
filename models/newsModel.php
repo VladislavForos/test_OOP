@@ -17,23 +17,23 @@
 
         }
 
-        function SetPositionFirstNew()
+        function SetPositionFirstNew($get)
         {
-            if (isset($_GET['num']))
+            if (isset($get))
             {
-                if ($_GET['num'] > $this->countNews[0])
+                if ($get > $this->countNews[0])
                 {
                     $this->positionFirstNews = 0;
                 }
                 else
                 {
-                    if ($_GET['num'] < 0)
+                    if ($get < 0)
                     {
                         $this->positionFirstNews = $this->countNews[0] - $this->count_news_on_page;
                     }
                     else
                     {
-                        $this->positionFirstNews = $_GET['num'];
+                        $this->positionFirstNews = $get;
                     }
                 }
             }
@@ -45,7 +45,6 @@
 
         function GetNews()
         {
-
             $this->_db->sql("SELECT * FROM news WHERE id > ".$this->positionFirstNews." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
             $news = $this->_db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
             return $news;
