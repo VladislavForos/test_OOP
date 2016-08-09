@@ -1,8 +1,8 @@
 <?php
     class Model
     {
-        private $positionFirstNews; //с какой по счету новости начинать вывод на экран
-        private $count_news_on_page = 4;
+        public $positionFirstNews; //с какой по счету новости начинать вывод на экран
+        public $count_news_on_page = 4;
         private $countNews;
         public $newsArray;
         private $_db;
