@@ -12,16 +12,16 @@
         {
             $this->positionFirstNews = 0;
             $this->_db = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);
-            $this->a = $this->_db->sql("SELECT COUNT(1) FROM news");
-            $this->countNews = @mysql_fetch_array( $this->a );
-
+            $this->_db->sql("SELECT COUNT(*) FROM news");
+            $temp =$this->_db->line();
+            $this->countNews = $temp['COUNT(*)'];
         }
 
         function SetPositionFirstNew($get)
         {
             if (isset($get))
             {
-                if ($get > $this->countNews[0])
+                if ($get > $this->countNews)
                 {
                     $this->positionFirstNews = 0;
                 }
@@ -29,7 +29,7 @@
                 {
                     if ($get < 0)
                     {
-                        $this->positionFirstNews = $this->countNews[0] - $this->count_news_on_page;
+                        $this->positionFirstNews = $this->countNews - $this->count_news_on_page;
                     }
                     else
                     {

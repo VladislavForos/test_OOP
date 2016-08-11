@@ -6,21 +6,35 @@
     class Controller
     {
         private $model;
+        private $view;
 
-        function __construct($model)
+        function __construct($model, $view)
         {
             $this->model = $model;
+            $this->view = $view;
         }
+
+        function HandlerOne()
+        {
+            if (isset($_GET['num']))
+            {
+                $this->model->SetPositionFirstNew($_GET['num']);
+            }
+            else
+            {
+                $this->model->SetPositionFirstNew(0);
+            }
+
+            $arr = $this->model->GetNews();
+            $this->view->ShowTemplate("templates/newsTemplate.php");
+        }
+
     }
 
     $model = new Model();
-    $controller = new Controller($model);
-    $view = new View($controller, $model);
+    $view = new View();
+    $controller = new Controller($model, $view);
 
-
-        $model->SetPositionFirstNew($_GET['num']);
-        $arr = $model->GetNews();
-        $view->ShowTemplate("templates/newsTemplate.php");
-
+    $controller->HandlerOne();
 ?>
 

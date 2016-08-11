@@ -7,20 +7,13 @@
  */
     class View
     {
-        private $model;
-        private $controller;
-        private $mainPath;
-
-        function __construct($controller, $model)
+        function __construct()
         {
-            $this->controller = $controller;
-            $this->model = $model;
-            $this->mainPath = "http://localhost/testing/";
         }
 
         function ShowTemplate($path)
         {
-            include_once "$this->mainPath$path";
+            include_once "../$path";
         }
     }
 ?>
