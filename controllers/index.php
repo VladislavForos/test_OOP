@@ -26,7 +26,7 @@
             }
 
             $arr = $this->model->GetNews();
-            $this->view->ShowTemplate("templates/newsTemplate.php");
+            $this->view->ShowTemplate("templates/newsTemplate.php", $this->model->positionFirstNews, $this->model->count_news_on_page, $arr);
         }
 
     }

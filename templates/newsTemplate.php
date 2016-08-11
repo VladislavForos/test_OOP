@@ -10,7 +10,7 @@
 <div id = "content">
     <?php
                 //вывод новостей на экран
-                foreach ($arr as $elem)
+                foreach ($data as $elem)
                 {
                     echo "  <h3> " . @$elem['title'] . " </h3>
                      <p> " . @$elem['content'] . " </p>
