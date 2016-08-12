@@ -14,27 +14,37 @@
             $this->view = $view;
         }
 
-        function HandlerOne()
+        function HandlerGetNum()
         {
-            if (isset($_GET['num']))
-            {
-                $this->model->SetPositionFirstNew($_GET['num']);
-            }
-            else
-            {
-                $this->model->SetPositionFirstNew(0);
-            }
-
             $arr = $this->model->GetNews();
             $this->view->ShowTemplate("templates/newsTemplate.php", $this->model->positionFirstNews, $this->model->count_news_on_page, $arr);
         }
 
+        function HandlerGet()
+        {
+            if (isset($_GET))
+            {
+                $get = key($_GET);
+                switch ($get)
+                {
+                    case 'num': $this->model->SetPositionFirstNew($_GET[$get]); $this->HandlerGetNum();
+                        break;
+
+                    default:    $this->model->SetPositionFirstNew(0); $this->HandlerGetNum();
+                }
+            }
+            else
+            {
+                $this->model->SetPositionFirstNew(0); $this->HandlerGetNum();
+            }
+
+        }
     }
 
     $model = new Model();
     $view = new View();
     $controller = new Controller($model, $view);
 
-    $controller->HandlerOne();
+    $controller->HandlerGet();
 ?>
 
