@@ -21,7 +21,7 @@
         {
             if (isset($get))
             {
-                if ($get > $this->countNews)
+                if ($get >= $this->countNews)
                 {
                     $this->positionFirstNews = 0;
                 }
