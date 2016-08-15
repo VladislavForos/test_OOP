@@ -12,8 +12,8 @@
                 //вывод новостей на экран
                 foreach ($data as $elem)
                 {
-                    echo "  <h3> " . @$elem['title'] . " </h3>
-                     <p> " . @$elem['content'] . " </p>
+                    echo "  <h3> " . $elem['title'] . " </h3>
+                     <p> " . $elem['content'] . " </p>
                     <br>
                      ";
             }
