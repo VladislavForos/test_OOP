@@ -1,5 +1,5 @@
 <?php
-    class Model
+    class NewsModel
     {
         public $positionFirstNews; //с какой по счету новости начинать вывод на экран
         public $count_news_on_page = 4;

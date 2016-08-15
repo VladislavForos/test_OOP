@@ -3,7 +3,7 @@
     require_once '../models/newsModel.php';
     require_once '../views/newsView.php';
 
-    class Controller
+    class NewsController
     {
         private $model;
         private $view;
@@ -41,9 +41,9 @@
         }
     }
 
-    $model = new Model();
+    $model = new NewsModel();
     $view = new View();
-    $controller = new Controller($model, $view);
+    $controller = new NewsController($model, $view);
 
     $controller->HandlerGet();
 ?>

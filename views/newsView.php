@@ -5,7 +5,7 @@
  * Date: 03.08.2016
  * Time: 16:48
  */
-    class View
+    class NewsView
     {
         function __construct()
         {
