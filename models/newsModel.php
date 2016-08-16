@@ -8,10 +8,10 @@
         private $_db;
         private $a;
 
-        function __construct()
+        function __construct($_db)
         {
             $this->positionFirstNews = 0;
-            $this->_db = new db_mysql(MYSQL_USER, MYSQL_PASSWORD, MYSQL_SERVER, MYSQL_DB);
+            $this->_db = $_db;
             $this->_db->sql("SELECT COUNT(*) FROM news");
             $temp =$this->_db->line();
             $this->countNews = $temp['COUNT(*)'];
@@ -43,7 +43,7 @@
             }
         }
 
-        function GetNews()
+        function GetNews($numberPage)
         {
             $this->_db->sql("SELECT * FROM news WHERE id > ".$this->positionFirstNews." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
             $news = $this->_db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
@@ -51,4 +51,3 @@
         }
 
     }
-?>

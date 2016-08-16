@@ -16,4 +16,3 @@
             include_once "../$path";
         }
     }
-?>

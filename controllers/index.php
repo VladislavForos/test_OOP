@@ -41,10 +41,9 @@
         }
     }
 
-    $model = new NewsModel();
-    $view = new View();
+    $model = new NewsModel($_db);
+    $view = new NewsView();
     $controller = new NewsController($model, $view);
 
     $controller->HandlerGet();
-?>
 
