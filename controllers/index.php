@@ -14,23 +14,23 @@
             $this->view = $view;
         }
 
-        function HandlerGetNum()
+        function handlerGetNum()
         {
-            $arr = $this->model->GetNews();
-            $this->view->ShowTemplate("templates/newsTemplate.php", $this->model->positionFirstNews, $this->model->count_news_on_page, $arr);
+            $arr = $this->model->getNews($numberPage);
+            $this->view->showTemplate("templates/newsTemplate.php", $this->model->positionFirstNews, $this->model->count_news_on_page, $arr);
         }
 
-        function HandlerGet()
+        function handlerGet()
         {
             if (isset($_GET))
             {
                 $get = key($_GET);
                 switch ($get)
                 {
-                    case 'num': $this->model->SetPositionFirstNew($_GET[$get]); $this->HandlerGetNum();
+                    case 'num': $this->model->setPositionFirstNew($_GET[$get]); $this->handlerGetNum();
                         break;
 
-                    default:    $this->model->SetPositionFirstNew(0); $this->HandlerGetNum();
+                    default:    $this->model->setPositionFirstNew(0); $this->handlerGetNum();
                 }
             }
             else
@@ -45,5 +45,5 @@
     $view = new NewsView();
     $controller = new NewsController($model, $view);
 
-    $controller->HandlerGet();
+    $controller->handlerGet();
 

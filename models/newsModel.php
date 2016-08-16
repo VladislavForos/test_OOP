@@ -6,7 +6,6 @@
         private $countNews;
         public $newsArray;
         private $_db;
-        private $a;
 
         function __construct($_db)
         {
@@ -17,7 +16,7 @@
             $this->countNews = $temp['COUNT(*)'];
         }
 
-        function SetPositionFirstNew($get)
+        function setPositionFirstNew($get)
         {
             if (isset($get))
             {
@@ -43,7 +42,7 @@
             }
         }
 
-        function GetNews($numberPage)
+        function getNews($numberPage)
         {
             $this->_db->sql("SELECT * FROM news WHERE id > ".$this->positionFirstNews." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
             $news = $this->_db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
