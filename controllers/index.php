@@ -14,10 +14,10 @@
             $this->view = $view;
         }
 
-        function handlerGetNum()
+        function handlerGetPageNum($pageNumber)
         {
-            $arr = $this->model->getNews($numberPage);
-            $this->view->showTemplate("templates/newsTemplate.php", $this->model->positionFirstNews, $this->model->count_news_on_page, $arr);
+            $arr = $this->model->getNews($pageNumber);
+            $this->view->showTemplate("templates/newsTemplate.php", $this->model->pageNumber, $arr);
         }
 
         function handlerGet()
@@ -27,15 +27,15 @@
                 $get = key($_GET);
                 switch ($get)
                 {
-                    case 'num': $this->model->setPositionFirstNew($_GET[$get]); $this->handlerGetNum();
+                    case 'page_num': $this->handlerGetPageNum($_GET['page_num']); 
                         break;
 
-                    default:    $this->model->setPositionFirstNew(0); $this->handlerGetNum();
+                    default:    $this->handlerGetPageNum(1);
                 }
             }
             else
             {
-                $this->model->SetPositionFirstNew(0); $this->HandlerGetNum();
+                 $this->HandlerGetPageNum(1);
             }
 
         }
