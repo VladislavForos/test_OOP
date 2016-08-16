@@ -19,14 +19,18 @@
             }
             ?>
 </div>
+
+<?php
+echo "Страница: ".$pageNumber;
+?>
 <div id = "navigation">
-    <a href = "../controllers/index.php?num=<?php
-                echo $positionFirstNews - $count_news_on_page;
+    <a href = "../controllers/index.php?page_num=<?php
+                echo $pageNumber - 1;
                 ?>">Назад
     </a>
 
-    <a href = "../controllers/index.php?num=<?php
-                echo $positionFirstNews + $count_news_on_page;
+    <a href = "../controllers/index.php?page_num=<?php
+                echo $pageNumber + 1;
                 ?>">Далее
     </a>
 </div>
