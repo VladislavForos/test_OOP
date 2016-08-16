@@ -11,7 +11,7 @@
         {
         }
 
-        function showTemplate($path, $positionFirstNews, $count_news_on_page, $data = null)
+        function showTemplate($path, $pageNumber, $data = null)
         {
             include_once "../$path";
         }
