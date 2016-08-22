@@ -27,15 +27,15 @@
                 $get = key($_GET);
                 switch ($get)
                 {
-                    case 'page_num': $this->handlerGetPageNum($_GET['page_num']); 
+                    case 'page_num': $this->handlerGetPageNum($_GET['page_num']);
                         break;
 
-                    default:    $this->handlerGetPageNum(1);
+                    default:    $this->handlerGetPageNum(firstPage);
                 }
             }
             else
             {
-                 $this->HandlerGetPageNum(1);
+                 $this->HandlerGetPageNum(firstPage);
             }
 
         }
