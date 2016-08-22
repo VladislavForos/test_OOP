@@ -14,30 +14,22 @@
             $this->view = $view;
         }
 
-        function handlerGetPageNum($pageNumber)
+        private function handlerGetPageNum($pageNumber)
         {
             $arr = $this->model->getNews($pageNumber);
             $this->view->showTemplate("templates/newsTemplate.php", $this->model->pageNumber, $arr);
         }
 
-        function handlerGet()
+        function handlerGet($get)
         {
-            if (isset($_GET))
-            {
-                $get = key($_GET);
-                switch ($get)
+                $getKey = key($get);
+                switch ($getKey)
                 {
-                    case 'page_num': $this->handlerGetPageNum($_GET['page_num']);
+                    case 'page_num': $this->handlerGetPageNum($get['page_num']);
                         break;
 
                     default:    $this->handlerGetPageNum(firstPage);
                 }
-            }
-            else
-            {
-                 $this->HandlerGetPageNum(firstPage);
-            }
-
         }
     }
 
@@ -45,5 +37,12 @@
     $view = new NewsView();
     $controller = new NewsController($model, $view);
 
-    $controller->handlerGet();
+    if (isset($_GET))
+    {
+        $controller->handlerGet($_GET);
+    }
+    else
+    {
+        $this->HandlerGetPageNum(firstPage);
+    }
 

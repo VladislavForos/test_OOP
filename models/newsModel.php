@@ -7,20 +7,15 @@ define("firstPage",1);
         private $countNews;
         private $maxPage;
         public $newsArray;
-        private $_db;
+        private $db;
 
         function __construct($_db)
         {
-            $this->pageNumber = 1;
-            $this->_db = $_db;
-            $this->_db->sql("SELECT COUNT(*) FROM news");
-            $temp =$this->_db->line();
-            $this->countNews = $temp['COUNT(*)'];
-            $this->maxPage = ceil($this->countNews/$this->count_news_on_page);
-            settype($this->maxPage, 'integer');
+            $this->pageNumber = firstPage;
+            $this->db = $_db;
         }
 
-        function checkNumberPage($digit)
+        private function checkNumberPage($digit)
         {
             if (settype($digit,'integer'))
             {
@@ -30,7 +25,7 @@ define("firstPage",1);
                 }
                 else
                 {
-                    if ($digit < 1)
+                    if ($digit < firstPage)
                     {
                         return $this->maxPage;
                     }
@@ -46,12 +41,22 @@ define("firstPage",1);
             }
         }
 
+        private function setCountNewsMaxPage()
+        {
+            $this->db->sql("SELECT COUNT(*) FROM news");
+            $temp =$this->db->line();
+            $this->countNews = $temp['COUNT(*)'];
+            $this->maxPage = ceil($this->countNews/$this->count_news_on_page);
+            settype($this->maxPage, 'integer');
+        }
+
         function getNews($page)
         {
+            $this->setCountNewsMaxPage();
             $this->pageNumber = $this->checkNumberPage($page);
             $positionFirstNew = ($this->pageNumber-1)*$this->count_news_on_page + 1;
-            $this->_db->sql("SELECT * FROM news WHERE id >= ".$positionFirstNew." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
-            $news = $this->_db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
+            $this->db->sql("SELECT * FROM news WHERE id >= ".$positionFirstNew." ORDER BY id ASC LIMIT ".$this->count_news_on_page);
+            $news = $this->db->matr();	//записываем в ассоциативный массив все записи из таблицы 'news'
             return $news;
         }
     }
