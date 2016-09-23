@@ -1,0 +1,19 @@
+<application>
+  <component name="NotificationConfiguration">
+    <notification groupId="Common Version Control Messages" displayType="NONE" />
+    <notification groupId="External Executable Critical Failures" displayType="NONE" />
+    <notification groupId="Find in Path" displayType="NONE" />
+    <notification groupId="IDE Usage Statistics" displayType="NONE" />
+    <notification groupId="Indexing" displayType="NONE" />
+    <notification groupId="PHPUnit" displayType="NONE" />
+    <notification groupId="Platform and Plugin Updates" displayType="NONE" />
+    <notification groupId="Plugins Suggestion" displayType="NONE" />
+    <notification groupId="Power Save Mode" displayType="NONE" />
+    <notification groupId="System Health" displayType="NONE" />
+    <notification groupId="Vcs Important Messages" displayType="NONE" />
+    <notification groupId="Vcs Messages" displayType="NONE" />
+    <notification groupId="Vcs Minor Notifications" displayType="NONE" />
+    <notification groupId="Web Deployment" displayType="NONE" />
+    <notification groupId="Web Deployment: Remote Host" displayType="NONE" shouldLog="false" />
+  </component>
+</application>
